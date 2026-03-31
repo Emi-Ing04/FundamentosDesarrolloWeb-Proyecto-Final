@@ -1,0 +1,249 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    color: white;
+    position: sticky; 
+    top: 0; /* Le dice que se pegue exactamente a 0 pixeles del techo de la pantalla */
+    z-index: 1000; /* Asegura que la barra flote por encima de las fotos de tu galería y no choque con ellas */
+    background-color: #333; /* Le damos color de fondo para que no se vuelva transparente al bajar */
+}
+
+header{
+    background-color: #333 !important;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    color:green !important;
+    background-color: #333 !important;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: white !important;
+    font-size: 18px;
+    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
+}
+
+.nav-links a:hover{
+    color: green !important; /* Cambia el color al pasar el mouse */
+    font-size: 30px; /* Aumenta el tamaño de la fuente al pasar el mouse */
+}
+
+.boton{
+    display: none;
+    flex-direction: column;
+    background-color: green !important;
+    color: white !important;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
+    gap: 5px;
+}
+
+.boton span{
+    width: 25px;
+    height: 3px;
+    background-color: white !important;
+    margin: 4px;
+    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
+}
+
+@media (max-width: 768px) {
+    .nav-links{
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        background: #111 !important;
+        flex-direction: column;
+        width: 200px;
+        height: calc(100vh-70px);
+        padding-top: 20px;
+
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    .boton{
+        display: flex;
+    }
+}
+
+.nav-links.active{
+    transform: translateX(0);
+}
+
+.footer{
+    background-color: #333 !important;
+    color: white !important;
+    padding: 20px 0;
+}
+
+.footer-container{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-section{
+    flex: 1;
+    min-width: 200px;
+    background-color: #333 !important;
+}
+
+.footer-section h2, .footer-section h3{
+    color: white !important;
+    margin-bottom: 10px;
+}
+
+.footer-section p{
+    color: white;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.footer-section ul{
+    list-style: none;
+}
+
+.footer-section ul li{
+    margin-bottom: 10px;
+}
+
+.footer-section a{
+    color: white !important;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover{
+    color: green !important;
+    font-size: 16px;
+}
+
+.footer-button{
+    border-top: 1px solid #555;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #333 !important;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .footer-container{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.cookie-banner{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* Evita que el banner interfiera con otros elementos de la página */
+    
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.cookie-content{
+    pointer-events: auto; /* Permite que los elementos dentro del contenedor del pie de página sean interactivos */ 
+    width: min  (90%, 1200px); /* Limita el ancho del contenedor para que no se extienda demasiado en pantallas grandes */
+    color: white !important;
+    border: 1px solid #555;
+    border-radius: 15px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cookie-content p{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: white !important;
+}
+
+.cookie-link{
+    text-decoration: underline;
+    color: white !important;
+    margin-left: 6px;
+}
+
+.cookie-actions{
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    background-color: yellowgreen !important;
+}
+
+.cookie-btn{
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.06s ease, opacity 0.3s ease;
+}
+
+.cookie-btn:active{
+    transform: scale(1.05);
+}
+
+.cookie-btn-primary{
+    background: white;
+    color: #333 !important;
+}
+
+.cookie-btn--ghost{
+    background: transparent;
+    color: white !important;
+    border: 1px solid white;
+    opacity: 0.9;
+}
+
+.cookie-btn--ghost:hover{
+    opacity: 1;
+}
+
+@media (max-width: 786px){
+    .cookie-content{
+        flex-direction: column;
+        align-items:stretch;
+    }
+    .cookie-actions{
+        width: 100%;
+    }
+
+    .cookie-btn{
+        width: 100%;
+    }
+}
