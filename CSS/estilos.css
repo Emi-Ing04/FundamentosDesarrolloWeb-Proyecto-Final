@@ -1,6 +1,6 @@
 :root {
     --bg-page: whitesmoke;
-    --nav-bg: #333333; /* El color oscuro de tu header actual */
+    --nav-bg: #333333; 
     --text-main: black;
     --text-light: white;
     --rebo-green: rgb(10, 202, 55);
@@ -24,12 +24,6 @@ body{
     padding-bottom: 60px; /* El ajuste que platicamos para que el footer no tape el contenido */
 }
 
-nav a{
-    color: rgb(10, 202, 55);
-    text-decoration: none;
-    margin: 0 15px;
-}
-
 section p a{
     color: rgb(10, 202, 55);
     text-decoration: none;
@@ -47,16 +41,6 @@ button {
 button:hover {
     background-color: rgb(40, 218, 78);
     color:chartreuse;
-}
-
-footer {
-    background-color: rgb(10, 202, 55);
-    color: black;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
 
 main section img {
@@ -78,31 +62,35 @@ button, input, textarea {
     margin: 20px 0;
 }
 
-nav ul{
-   display: flex; /* Activa Flexbox */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    flex-wrap: wrap; /* Permite que los enlaces pasen a otra línea si la pantalla es pequeña */
-    gap: 30px; /* Crea un espacio exacto entre cada enlace */
-    list-style: none; /* Quita los puntos negros por defecto de la lista */
-    padding: 0;
-    margin: 20px 0;
+/* --- NUEVA GALERÍA CON CSS GRID --- */
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    
+    /* --- LAS 3 NUEVAS REGLAS DE CENTRADO --- */
+    max-width: 1200px; /* 1. Evita que la cuadrícula se estire infinitamente en monitores gigantes */
+    margin: 30px auto; /* 2. El "auto" a los lados empuja el contenedor exactamente al centro de la página */
+    justify-content: center; /* 3. Si sobra espacio en la cuadrícula, centra los elementos en lugar de cargarlos a la izquierda */
+    
+    padding: 0 20px;
 }
 
-.galeria-flex {
-    display: flex; /* Activa Flexbox para este contenedor */
-    flex-wrap: wrap; /* Si las fotos no caben, las empuja a la fila de abajo */
-    justify-content: center; /* Centra toda la cuadrícula */
-    gap: 15px; /* Espaciado uniforme entre todas las fotos */
-    margin-top: 20px;
+.galeria-grid img {
+    width: 100%; /* La imagen llenará todo el espacio de su celda en el Grid */
+    height: 250px; /* Forzamos una altura uniforme para que todas las cajas sean iguales */
+    object-fit: cover; /* Evita que las fotos se deformen al forzar la altura */
+    border-radius: 8px; /* Bordes redondeados más modernos */
+    box-shadow: var(--shadow); /* Se usa la sombra definida antes en el :root */
+    transition: transform 0.3s ease; /* Transición para un efecto al pasar el ratón */
 }
 
-/* Regla para que las imágenes dentro del flexbox se adapten al instante */
-.galeria-flex img {
-    width: 300px; /* Tamaño base de las imágenes */
-    flex-grow: 1; /* Permite que la imagen crezca un poco para llenar espacios vacíos */
-    object-fit: cover; /* Evita que las fotos se deformen o estiren */
-    border-radius: 5%;
+/* Un pequeño efecto para destacar la foto que el usuario está viendo */
+.galeria-grid img:hover {
+    transform: scale(1.05); /* Hace que la foto crezca un 5% */
 }
+
 
 .btn-flotante {
     position: fixed; /* Lo ancla a la ventana del navegador */
@@ -145,7 +133,7 @@ html {
     max-width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Crea un efecto de sombra sutil (profundidad) */
     text-align: center;
-    transition: 0.3s; /* Transición suave para cuando pasemos el ratón */
+    transition: 0.3s; /* Transición suave para cuando se pase el ratón */
 }
 
 /* Efecto interactivo para las tarjetas */
@@ -157,4 +145,167 @@ html {
 .tarjeta h3 {
     color: rgb(8, 140, 38);
     margin-top: 0;
+}
+
+.footer{
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-container{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-section{
+    flex: 1;
+    min-width: 200px;
+    background-color: #333;
+}
+
+.footer-section h2, .footer-section h3{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-section p{
+    color: white;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.footer-section ul{
+    list-style: none;
+}
+
+.footer-section ul li{
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block; 
+    transition: all 0.3s ease; /* Cambia a "all" para animar color y tamaño a la vez */
+}
+
+.footer-section a:hover {
+    color: var(--rebo-green); /* Aprovecha las variables creadas */
+    transform: scale(1.1); /* Hace que crezca un 10% visualmente sin desalinear nada */
+}
+
+.footer-button{
+    border-top: 1px solid #555;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #333;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .footer-container{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+/* --- BANNER DE COOKIES (Fijo en la parte inferior) --- */
+
+.cookie-banner {
+    position: fixed; /* Lo ancla a la ventana del navegador */
+    bottom: 0; /* Lo pega exactamente al piso de la pantalla */
+    left: 0;
+    width: 100%;
+    background-color: #333333; /* El mismo color oscuro de tu barra superior */
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Sombra invertida (hacia arriba) */
+    z-index: 2000; /* Un nivel Z muy alto para que NADA lo tape */
+    display: flex;
+    justify-content: center; /* Centra el contenedor interno */
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center; /* Centra verticalmente el texto y los botones */
+    justify-content: space-between; /* Empuja el texto a la izquierda y botones a la derecha */
+    max-width: 1200px; /* Limita el ancho del contenido para que no se estire demasiado en pantallas grandes */
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap; /* Si la pantalla es muy pequeña (celular), los botones bajan de renglón */
+}
+
+.cookie-content p {
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.cookie-link {
+    color: rgb(10, 202, 55);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* --- BOTONES DEL BANNER --- */
+.cookie-actions {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones de Aceptar y Rechazar */
+}
+
+.cookie-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Botón Principal (Aceptar) */
+.cookie-btn--primary {
+    background-color: rgb(10, 202, 55);
+    color: black;
+}
+
+.cookie-btn--primary:hover {
+    background-color: rgb(40, 218, 78);
+    transform: scale(1.05);
+}
+
+/* Botón Secundario (Rechazar) */
+.cookie-btn--ghost {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.cookie-btn--ghost:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 786px){
+    .cookie-content{
+        flex-direction: column;
+        align-items:stretch;
+    }
+    .cookie-actions{
+        width: 100%;
+    }
+
+    .cookie-btn{
+        width: 100%;
+    }
 }

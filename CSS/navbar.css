@@ -3,19 +3,19 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background-color: var(--nav-bg); /* Usando la variable */
+    background-color: var(--nav-bg);
     color: var(--text-light);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow); /* Agrega la sombra de tu instructor para separar la barra del fondo */
+    box-shadow: var(--shadow); 
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: var(--rebo-green); /* Usando la variable */
-    letter-spacing: 2px; /* Un pequeño toque para que el logo se vea más pro */
+    color: var(--rebo-green);
+    letter-spacing: 2px; 
 }
 
 .nav-links{
@@ -28,11 +28,11 @@
 /* Transición base para los enlaces */
 .nav-links a {
     text-decoration: none;
-    color: var(--text-light); /* Asumiendo que usaste las variables del paso anterior, o pon "white" */
+    color: var(--text-light);
     font-size: 16px;
     font-weight: 500;
-    display: inline-block; /* Necesario para que la transformación funcione correctamente */
-    transition: all 0.3s ease; /* Anima todos los cambios suavemente */
+    display: inline-block; 
+    transition: all 0.3s ease; 
 }
 
 /* El efecto dinámico al pasar el cursor */
@@ -48,210 +48,50 @@
     border-bottom: 2px solid var(--rebo-green); /* Agrega una línea inferior elegante */
 }
 
-.boton{
-    display: none;
+/* --- DISEÑO DEL BOTÓN --- */
+.boton {
+    display: none; /* Oculto por defecto en pantallas grandes */
     flex-direction: column;
-    background-color: green !important;
-    color: white !important;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    gap: 6px;
     cursor: pointer;
-    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
-    gap: 5px;
+    background: transparent;
+    border: none;
+    z-index: 2000; /* Asegura que el botón siempre esté por encima del menú desplegado */
 }
 
-.boton span{
-    width: 25px;
+/* Las 3 líneas del botón */
+.boton span {
+    width: 30px;
     height: 3px;
-    background-color: white !important;
-    margin: 4px;
-    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
+    background-color: var(--rebo-green);
+    border-radius: 3px;
+    transition: all 0.3s ease;
 }
 
+/* --- MEDIA QUERY (El límite de tolerancia para pantallas pequeñas) --- */
 @media (max-width: 768px) {
-    .nav-links{
+    .boton {
+        display: flex; /* El botón aparece cuando la pantalla es menor a 768px */
+    }
+
+    .nav-links {
         position: absolute;
-        top: 60px;
-        right: 0px;
-        background: #111 !important;
-        flex-direction: column;
-        width: 200px;
-        height: calc(100vh-70px);
-        padding-top: 20px;
-
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    .boton{
-        display: flex;
-    }
-}
-
-.nav-links.active{
-    transform: translateX(0);
-}
-
-.footer{
-    background-color: #333 !important;
-    color: white !important;
-    padding: 20px 0;
-}
-
-.footer-container{
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.footer-section{
-    flex: 1;
-    min-width: 200px;
-    background-color: #333 !important;
-}
-
-.footer-section h2, .footer-section h3{
-    color: white !important;
-    margin-bottom: 10px;
-}
-
-.footer-section p{
-    color: white;
-    line-height: 1.5;
-    font-size: 14px;
-}
-
-.footer-section ul{
-    list-style: none;
-}
-
-.footer-section ul li{
-    margin-bottom: 10px;
-}
-
-.footer-section a{
-    color: white !important;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-.footer-section a:hover{
-    color: green !important;
-    font-size: 16px;
-}
-
-.footer-button{
-    border-top: 1px solid #555;
-    text-align: center;
-    margin-top: 20px;
-    background-color: #333 !important;
-    font-size: 12px;
-}
-
-@media (max-width: 768px) {
-    .footer-container{
+        top: 100%; /* Hace que el menú empiece justo debajo de la barra oscura */
+        right: 0;
+        background-color: var(--nav-bg); /* Usamos el color oscuro de la variable */
+        width: 250px;
+        height: 100vh;
         flex-direction: column;
         align-items: center;
-        text-align: center;
-    }
-    .footer-section{
-        text-align: center;
-        margin-bottom: 20px;
-    }
-}
-
-.cookie-banner{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    pointer-events: none; /* Evita que el banner interfiera con otros elementos de la página */
-    
-    background-color: #333 !important;
-    color: white !important;
-}
-
-.cookie-content{
-    pointer-events: auto; /* Permite que los elementos dentro del contenedor del pie de página sean interactivos */ 
-    width: min  (90%, 1200px); /* Limita el ancho del contenedor para que no se extienda demasiado en pantallas grandes */
-    color: white !important;
-    border: 1px solid #555;
-    border-radius: 15px;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.cookie-content p{
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.4;
-    color: white !important;
-}
-
-.cookie-link{
-    text-decoration: underline;
-    color: white !important;
-    margin-left: 6px;
-}
-
-.cookie-actions{
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
-    background-color: yellowgreen !important;
-}
-
-.cookie-btn{
-    border: 0;
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: transform 0.06s ease, opacity 0.3s ease;
-}
-
-.cookie-btn:active{
-    transform: scale(1.05);
-}
-
-.cookie-btn-primary{
-    background: white;
-    color: #333 !important;
-}
-
-.cookie-btn--ghost{
-    background: transparent;
-    color: white !important;
-    border: 1px solid white;
-    opacity: 0.9;
-}
-
-.cookie-btn--ghost:hover{
-    opacity: 1;
-}
-
-@media (max-width: 786px){
-    .cookie-content{
-        flex-direction: column;
-        align-items:stretch;
-    }
-    .cookie-actions{
-        width: 100%;
+        padding-top: 40px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5); 
+        
+        transform: translateX(100%); /* Empuja el menú un 100% de su ancho hacia la derecha (fuera de vista) */
+        transition: transform 0.4s ease-in-out; /* La velocidad del deslizamiento */
     }
 
-    .cookie-btn{
-        width: 100%;
+    /* ESTA CLASE ES LA QUE ENCENDERÁ JAVASCRIPT */
+    .nav-links.active {
+        transform: translateX(0); /* Regresa el menú a su posición original (0) */
     }
 }
