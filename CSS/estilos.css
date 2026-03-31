@@ -93,23 +93,25 @@ button, input, textarea {
 }
 
 
+/* --- BOTÓN FLOTANTE --- */
 .btn-flotante {
-    position: fixed; /* Lo ancla a la ventana del navegador */
-    bottom: 60px; /* Lo separa del fondo para que no choque con tu footer fijo */
-    right: 20px; /* Lo mantiene en la esquina inferior derecha */
-    background-color: rgb(8, 140, 38); /* Un verde más oscuro para buen contraste */
+    position: fixed; /* Lo ancla a la ventana */
+    bottom: 80px; /* Lo subimos un poco más para que el banner de cookies no lo tape */
+    right: 20px;
+    background-color: var(--rebo-green-dark, rgb(8, 140, 38)); 
     color: white;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
     font-weight: bold;
-    z-index: 1000; /* Asegura que flote por encima de las fotos y el texto */
-    transition: 0.3s; /* Transición suave para el hover */
+    z-index: 3000; 
+    transition: all 0.3s ease;
 }
 
 .btn-flotante:hover {
-    background-color: rgb(40, 218, 78); /* Verde brillante al pasar el ratón */
+    background-color: var(--rebo-green-hover, rgb(40, 218, 78));
     color: black;
+    transform: translateY(-5px); /* Pequeño salto al pasar el mouse */
 }
 
 html {
