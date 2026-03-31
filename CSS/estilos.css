@@ -25,6 +25,32 @@ body{
     overflow-x: hidden;
 }
 
+/* --- ESTRUCTURA GLOBAL DE LAS SECCIONES --- */
+
+section {
+    max-width: 1000px; /* Limita el ancho para que la lectura sea cómoda */
+    margin: 40px auto; /* El "auto" a los lados centra todo el bloque en la pantalla */
+    padding: 0 20px; /* Un pequeño margen interno por si se ve en celulares */
+    
+    /* Usamos Flexbox para centrar todo el contenido interno como en un eje vertical */
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* Centra las imágenes y otros elementos visuales */
+    text-align: center; /* Centra los títulos (h2) y los párrafos (p) */
+}
+
+section p {
+    max-width: 800px; /* Evita que las líneas de texto sean demasiado largas */
+    margin-bottom: 20px; /* Separación uniforme entre párrafos */
+}
+
+section > img {
+    margin: 20px 0; /* Separación arriba y abajo */
+    border-radius: 8px; /* Bordes suaves */
+    box-shadow: var(--shadow); 
+    max-width: 100%;
+}
+
 section p a{
     color: rgb(10, 202, 55);
     text-decoration: none;
@@ -42,12 +68,6 @@ button {
 button:hover {
     background-color: rgb(40, 218, 78);
     color:chartreuse;
-}
-
-main section img {
-    border-radius: 5%;
-    max-width: 100%;
-    height: auto;
 }
 
 button, input, textarea {
