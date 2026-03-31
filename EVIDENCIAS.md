@@ -13,27 +13,41 @@ Puedes visualizar el proyecto terminado y funcionando en vivo a través de GitHu
 A continuación, presento las evidencias gráficas del repositorio y del proyecto terminado. *(Nota: Las imágenes están alojadas en la carpeta local de este repositorio).*
 
 ### Vistas de GitHub Pages
-![Vista del proyecto terminado en GitHub Pages](./Evidencias/Evidencia-Proyecto-1.png)
+![Vista del proyecto terminado en GitHub Pages](./FotoEvidencia/GitHub Pages.png)
 
 ### Historial de Commits
-![Captura del historial de commits en GitHub](./Evidencias/Evidencia-Proyecto-2.png)
+![Captura del historial de commits en GitHub](./FotoEvidencia/HistorialCommits.png)
 
+### Vista móvil
+![Captura del vista en móvil](./FotoEvidencia/Movil.png)
 
+### Vista desktop
+![Captura del vista en desktop](./FotoEvidencia/Desktop.png)
 
 ---
 
 ## Aprendizajes
 
-### 1. ¿Qué fue lo más fácil y lo más retador?
-* **Lo más fácil:** [Crear la estructura básica de HTML, enlazar el archivo CSS, o subir los primeros cambios a GitHub.]
+### 1. ¿Qué fue lo más fácil y lo más retador del proyecto?
+*Lo más fácil fue comprender la estructura base de HTML y aplicar estilos generales usando variables CSS (:root), ya que me permitió parametrizar los colores y la tipografía de todo el proyecto de forma rápida.
 
-* **Lo más retador:** [Entender cómo funciona el posicionamiento en CSS, centrar elementos, o resolver algún conflicto con Git.]
+Lo más retador fue diseñar la 'cinemática' del menú responsivo para dispositivos móviles. Lograr que el botón de hamburguesa se transformara en una 'X', sincronizar la animación de despliegue del menú usando la propiedad transform: translateX(), y enlazar todo correctamente con JavaScript sin generar problemas de scroll horizontal requirió mucha iteración y ajuste de tolerancias en el código.
 
-### 2. ¿Qué etiquetas semánticas usaste y por qué?
-* [Utilicé etiquetas como `<header>`, `<main>`, `<section>` y `<footer>`. Las usé porque permiten estructurar el contenido de forma lógica, lo cual es buena práctica para mejorar la accesibilidad de la página y hacer el código más fácil de leer".]
+### 2. ¿Qué partes de HTML semántico y Flexbox usaste y por qué?
+* Utilicé etiquetas de HTML semántico como <header>, <nav>, <main>, <section>, y <footer>. Las implementé porque le dan un orden lógico a la información, no solo para el navegador, sino para los lectores de pantalla. Siendo REBO un dispositivo con enfoque inclusivo, la accesibilidad desde el código fuente era un requisito fundamental.
 
-### 3. ¿Cómo organizaste tus commits?
-* ["Organicé mis commits por cada avance significativo que lograba. Intenté usar mensajes claros y descriptivos, como 'Agrega estructura principal HTML' o 'Aplica estilos CSS al header', para mantener un buen historial de cambios".]
+En cuanto a Flexbox, lo utilicé como mi herramienta principal para alineación en una sola dirección (como una línea de ensamblaje). Lo apliqué en la barra de navegación (justify-content: space-between) para separar el logo de los enlaces, en el banner de cookies para alinear el texto con los botones, y en el footer para distribuir las columnas de información uniformemente sin importar el ancho de la pantalla.
 
-### 4. ¿Qué mejorarías en la siguiente iteración?
-* ["En la siguiente versión me gustaría hacer que la página sea completamente responsiva para celulares, mejorar la paleta de colores y, más adelante, agregarle interactividad con JavaScript".]
+### 3. ¿Cómo organizaste tus media queries y breakpoints?
+* Organicé mis media queries siguiendo un enfoque modular, colocándolas al final de cada archivo CSS correspondiente (navbar.css y estilos.css) para que sobreescribieran las reglas base solo cuando fuera necesario.
+
+Utilicé un breakpoint principal de max-width: 768px, que es el límite de tolerancia estándar para tabletas y teléfonos móviles. Al cruzar este punto, las media queries apilan las columnas del footer en dirección vertical (flex-direction: column), ocultan la barra de navegación tradicional, y encienden la interfaz táctil con el botón de hamburguesa para optimizar el espacio visual.
+
+### 4. ¿Qué mejorarías en una siguiente versión?
+* En una siguiente versión me enfocaría en tres áreas:
+
+Accesibilidad avanzada: Profundizaría en el uso de etiquetas ARIA y navegación por teclado más estricta para hacer honor a la naturaleza inclusiva del proyecto REBO.
+
+Optimización de carga: Implementaría compresión de imágenes de próxima generación (como WebP) para que la galería de 'Pruebas en Usuarios' cargue mucho más rápido en conexiones móviles inestables.
+
+Micro-interacciones: Agregaría animaciones más sofisticadas en las tarjetas informativas y quizás un 'Modo Oscuro' nativo, utilizando más funciones de JavaScript para enriquecer la experiencia de usuario final.
