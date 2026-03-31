@@ -1,0 +1,114 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--nav-bg);
+    color: var(--text-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow); 
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--rebo-green);
+    letter-spacing: 2px; 
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Transición base para los enlaces */
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block; 
+    transition: all 0.3s ease; 
+}
+
+/* El efecto dinámico al pasar el cursor */
+.nav-links a:hover {
+    color: var(--rebo-green); /* Cambia al color verde */
+    transform: scale(1.15); /* Aumenta el tamaño visual un 15% sin empujar a los demás */
+}
+
+/* La clase para resaltar en qué página estamos */
+.nav-links a.pagina-activa {
+    color: var(--rebo-green);
+    font-weight: bold;
+    border-bottom: 2px solid var(--rebo-green); /* Agrega una línea inferior elegante */
+}
+
+/* --- DISEÑO Y ANIMACIÓN DEL BOTÓN --- */
+.boton {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye las 3 líneas uniformemente */
+    width: 30px;
+    height: 20px; /* Altura estricta para el mecanismo */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+    padding: 0;
+}
+
+.boton span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--rebo-green);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: left center; /* El eje de la bisagra */
+}
+
+/* La cinemática de la X cuando JS agrega la clase .active */
+.boton.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.boton.active span:nth-child(2) {
+    opacity: 0; /* La línea central desaparece */
+}
+.boton.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+/* --- BLOQUEO DE SCROLL --- */
+.no-scroll {
+    overflow: hidden; 
+}
+
+/* --- MEDIA QUERY PARA MÓVILES (Mecanismo Definitivo) --- */
+@media (max-width: 768px) {
+    .boton {
+        display: flex; /* Enciende el botón */
+    }
+
+    .nav-links {
+        position: fixed; /* Se ancla al cristal de la pantalla */
+        top: 60px; /* Empieza justo debajo de la barra de navegación */
+        right: 0; /* Se alinea a la derecha */
+        width: 250px;
+        height: calc(100vh - 60px);
+        background-color: var(--nav-bg);
+        flex-direction: column; /* Apila los enlaces uno debajo del otro */
+        padding-top: 40px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        
+        /* EL RIEL DE OCULTAMIENTO (Hardware Accelerated) */
+        transform: translateX(100%); /* Lo empuja exactamente el 100% de su propio ancho hacia la derecha */
+        transition: transform 0.4s ease-in-out; /* Hace que el deslizamiento sea fluido */
+    }
+
+    .nav-links.active {
+        transform: translateX(0); /* Lo regresa a su posición original (0) */
+    }
+}
