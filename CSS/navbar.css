@@ -1,24 +1,21 @@
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    color: white;
-    position: sticky; 
-    top: 0; /* Le dice que se pegue exactamente a 0 pixeles del techo de la pantalla */
-    z-index: 1000; /* Asegura que la barra flote por encima de las fotos de tu galería y no choque con ellas */
-    background-color: #333; /* Le damos color de fondo para que no se vuelva transparente al bajar */
+    padding: 15px 40px;
+    background-color: var(--nav-bg); /* Usando la variable */
+    color: var(--text-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow); /* Agrega la sombra de tu instructor para separar la barra del fondo */
 }
 
-header{
-    background-color: #333 !important;
-}
-
-.logo{
+.logo {
     font-size: 24px;
     font-weight: bold;
-    color:green !important;
-    background-color: #333 !important;
+    color: var(--rebo-green); /* Usando la variable */
+    letter-spacing: 2px; /* Un pequeño toque para que el logo se vea más pro */
 }
 
 .nav-links{
@@ -28,16 +25,27 @@ header{
     gap: 20px;
 }
 
-.nav-links a{
+/* Transición base para los enlaces */
+.nav-links a {
     text-decoration: none;
-    color: white !important;
-    font-size: 18px;
-    transition:0.3s; /*Agrega una transición suave para el cambio de color*/
+    color: var(--text-light); /* Asumiendo que usaste las variables del paso anterior, o pon "white" */
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block; /* Necesario para que la transformación funcione correctamente */
+    transition: all 0.3s ease; /* Anima todos los cambios suavemente */
 }
 
-.nav-links a:hover{
-    color: green !important; /* Cambia el color al pasar el mouse */
-    font-size: 30px; /* Aumenta el tamaño de la fuente al pasar el mouse */
+/* El efecto dinámico al pasar el cursor */
+.nav-links a:hover {
+    color: var(--rebo-green); /* Cambia al color verde */
+    transform: scale(1.15); /* Aumenta el tamaño visual un 15% sin empujar a los demás */
+}
+
+/* La clase para resaltar en qué página estamos */
+.nav-links a.pagina-activa {
+    color: var(--rebo-green);
+    font-weight: bold;
+    border-bottom: 2px solid var(--rebo-green); /* Agrega una línea inferior elegante */
 }
 
 .boton{

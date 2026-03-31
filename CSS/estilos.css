@@ -1,5 +1,19 @@
-*{
-    font-family: Arial, sans-serif;
+:root {
+    --bg-page: whitesmoke;
+    --nav-bg: #333333; /* El color oscuro de tu header actual */
+    --text-main: black;
+    --text-light: white;
+    --rebo-green: rgb(10, 202, 55);
+    --rebo-green-hover: rgb(40, 218, 78);
+    --rebo-green-dark: rgb(8, 140, 38);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra elegante para la barra */
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body{
