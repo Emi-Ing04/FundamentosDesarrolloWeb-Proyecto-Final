@@ -1,4 +1,4 @@
-// 1. Seleccionamos las piezas usando la CLASE (que ya tienes en tu HTML)
+// 1. Seleccionamos las piezas usando la CLASE, no el ID, para que sea más flexible y reutilizable
 const btnMenu = document.querySelector('.boton');
 const navLinks = document.querySelector('.nav-links');
 const enlaces = document.querySelectorAll('.nav-links a');
