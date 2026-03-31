@@ -48,50 +48,67 @@
     border-bottom: 2px solid var(--rebo-green); /* Agrega una línea inferior elegante */
 }
 
-/* --- DISEÑO DEL BOTÓN --- */
+/* --- DISEÑO Y ANIMACIÓN DEL BOTÓN --- */
 .boton {
-    display: none; /* Oculto por defecto en pantallas grandes */
+    display: none;
     flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
+    justify-content: space-between; /* Distribuye las 3 líneas uniformemente */
+    width: 30px;
+    height: 20px; /* Altura estricta para el mecanismo */
     background: transparent;
     border: none;
-    z-index: 2000; /* Asegura que el botón siempre esté por encima del menú desplegado */
+    cursor: pointer;
+    z-index: 2000;
+    padding: 0;
 }
 
-/* Las 3 líneas del botón */
 .boton span {
-    width: 30px;
+    width: 100%;
     height: 3px;
     background-color: var(--rebo-green);
     border-radius: 3px;
     transition: all 0.3s ease;
+    transform-origin: left center; /* El eje de la bisagra */
 }
 
-/* --- MEDIA QUERY (El límite de tolerancia para pantallas pequeñas) --- */
+/* La cinemática de la X cuando JS agrega la clase .active */
+.boton.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.boton.active span:nth-child(2) {
+    opacity: 0; /* La línea central desaparece */
+}
+.boton.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+/* --- BLOQUEO DE SCROLL --- */
+.no-scroll {
+    overflow: hidden; 
+}
+
+/* --- MEDIA QUERY PARA MÓVILES (Mecanismo Definitivo) --- */
 @media (max-width: 768px) {
     .boton {
-        display: flex; /* El botón aparece cuando la pantalla es menor a 768px */
+        display: flex; /* Enciende el botón */
     }
 
     .nav-links {
-        position: absolute;
-        top: 100%; /* Hace que el menú empiece justo debajo de la barra oscura */
-        right: 0;
-        background-color: var(--nav-bg); /* Usamos el color oscuro de la variable */
+        position: fixed; /* Se ancla al cristal de la pantalla */
+        top: 60px; /* Empieza justo debajo de la barra de navegación */
+        right: 0; /* Se alinea a la derecha */
         width: 250px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: center;
+        height: calc(100vh - 60px);
+        background-color: var(--nav-bg);
+        flex-direction: column; /* Apila los enlaces uno debajo del otro */
         padding-top: 40px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5); 
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
         
-        transform: translateX(100%); /* Empuja el menú un 100% de su ancho hacia la derecha (fuera de vista) */
-        transition: transform 0.4s ease-in-out; /* La velocidad del deslizamiento */
+        /* EL RIEL DE OCULTAMIENTO (Hardware Accelerated) */
+        transform: translateX(100%); /* Lo empuja exactamente el 100% de su propio ancho hacia la derecha */
+        transition: transform 0.4s ease-in-out; /* Hace que el deslizamiento sea fluido */
     }
 
-    /* ESTA CLASE ES LA QUE ENCENDERÁ JAVASCRIPT */
     .nav-links.active {
-        transform: translateX(0); /* Regresa el menú a su posición original (0) */
+        transform: translateX(0); /* Lo regresa a su posición original (0) */
     }
 }

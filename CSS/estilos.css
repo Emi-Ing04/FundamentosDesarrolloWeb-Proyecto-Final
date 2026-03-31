@@ -22,6 +22,7 @@ body{
     font-family: Arial, Helvetica, sans-serif; /* Todos los textos heredarán esta fuente */
     line-height: 1.6; /* Todos los párrafos heredarán este espaciado para ser más legibles */
     padding-bottom: 60px; /* El ajuste que platicamos para que el footer no tape el contenido */
+    overflow-x: hidden;
 }
 
 section p a{
